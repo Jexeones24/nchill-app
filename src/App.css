@@ -153,10 +153,12 @@ hr {
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #eee;
-  color: #f6f6f6;
   background-color: white;
   position: relative;
   z-index: 0;
+}
+::placeholder {
+  color: grey;
 }
 .movie-group-intro {
   position: relative;
