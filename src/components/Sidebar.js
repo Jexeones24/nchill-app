@@ -10,7 +10,7 @@ export const Sidebar = (props) => {
               <div className='filter-title'>FILTERS</div>
               <hr />
               <div className='term'>Genres</div>
-              {props.genres.map((g) => <p className='sidebar-names' key={g.id}>{g.name}</p>)}
+              {props.genres.map((g) => <p className='sidebar-links' value={g} key={g.id} onClick={props.getGenre.bind(this, g)}>{g.name}</p>)}
               <hr />
               <div className='term'>Actors</div>
               <hr />

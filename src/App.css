@@ -107,8 +107,13 @@ a {
   border-color: #e3e3e3;
   padding: 12px;
 }
-.sidebar-names {
-  font-size: 10px;
+.sidebar-links {
+  color: black;
+  font-size: 11px;
+  text-decoration: none;
+}
+.sidebar-links:hover {
+  color: grey;
 }
 .filter-title {
   font-size: 20px;

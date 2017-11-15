@@ -10,3 +10,9 @@ export const fetchGenres = () => {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
   .then(resp => resp.json())
 }
+
+export const fetchByGenre = (genre) => {
+  console.log('fetching genre:', genre)
+  // return fetch(``)
+  // .then(resp => resp.json())
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import { fetchPopularMovies, fetchGenres } from './lib/movieService'
+import { fetchPopularMovies, fetchGenres, fetchByGenre } from './lib/movieService'
 import { filterItems } from './lib/movieHelpers'
 import { Main } from './components'
 
@@ -30,6 +30,11 @@ class App extends Component {
 
   }
 
+  getGenre = (e) => {
+    let genre = e.name
+    fetchByGenre(genre)
+  }
+
   filterList = (input) => {
     let updatedList = this.state.initialResults
     updatedList = updatedList.filter(item => item.title.toLowerCase().includes(input.toLowerCase()))
@@ -46,6 +51,7 @@ class App extends Component {
             genres={this.state.genres}
             results={this.state.results}
             filterList={this.filterList}
+            getGenre={this.getGenre}
           />
         </div>
       </div>
