@@ -26,10 +26,6 @@ class App extends Component {
     })
   }
 
-  componentDidMount () {
-
-  }
-
   getGenre = (e) => {
     fetchByGenre(e)
     .then(data => {
@@ -43,6 +39,11 @@ class App extends Component {
     this.setState({ results: updatedList })
   }
 
+  handleImageClick = (e) => {
+    console.log('handling image click', e)
+    // filter and get details to render
+  }
+
   render () {
     console.log('app state:', this.state)
     return (
@@ -54,6 +55,7 @@ class App extends Component {
             results={this.state.results}
             filterList={this.filterList}
             getGenre={this.getGenre}
+            handleImageClick={this.handleImageClick}
           />
         </div>
       </div>

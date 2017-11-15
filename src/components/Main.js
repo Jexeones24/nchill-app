@@ -15,6 +15,7 @@ export const Main = ({ ...props }) => {
               <Gallery
                 results={props.results}
                 filterList={props.filterList}
+                handleImageClick={props.handleImageClick}
               />
             </div>
           </div>

@@ -18,7 +18,7 @@ export const Gallery = (props) => {
             <div className='search-title'>TRENDING</div>
             <div className='movie-section-content'>
               <div className='movie-box'>
-                {props.results.map((result) => <Image key={result.id} path={result.poster_path} />)}
+                {props.results.map((result) => <Image key={result.id} path={result.poster_path} value={result} handleImageClick={props.handleImageClick} />)}
               </div>
             </div>
           </div>
