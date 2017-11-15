@@ -1,8 +1,34 @@
 import React, { Component } from 'react'
 import './App.css'
+import { fetchTrending } from './lib/movieService'
+
+const API_KEY = '1dc59a7b7ad2a6a037fcc8da29073f1a'
+const BASE_IMG_URL = 'http://image.tmdb.org/t/p/w342/'
 
 class App extends Component {
+  state = {
+    trending: []
+  }
+
+  componentDidMount () {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+    .then(resp => resp.json())
+    .then(data => {
+      let trending = data.results
+      this.setState({ trending })
+    })
+
+    // fetch('https://api.themoviedb.org/3/movie/550?api_key=1dc59a7b7ad2a6a037fcc8da29073f1a')
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   let url = data.poster_path
+    //   this.setState({ url })
+    // })
+  }
+
   render () {
+    console.log('app state:', this.state)
+    const trending = this.state.trending
     return (
       <div className='App h-100'>
         <div className='small-layout h-100'>
@@ -54,15 +80,9 @@ class App extends Component {
                         <div className='movie-section'>
                           <div className='search-title'>TRENDING</div>
                           <div className='movie-section-content'>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
-                            <div className='movie-box'>MOVIE</div>
+                            <div className='movie-box'>
+                              {trending.map((movie) => <Image key={movie.id} path={movie.poster_path} />)}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -86,5 +106,7 @@ class App extends Component {
     )
   }
 }
+
+const Image = ({path}) => <img src={BASE_IMG_URL + path} alt='image' />
 
 export default App
