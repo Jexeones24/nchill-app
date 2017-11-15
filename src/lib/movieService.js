@@ -12,7 +12,10 @@ export const fetchGenres = () => {
 }
 
 export const fetchByGenre = (genre) => {
+
   console.log('fetching genre:', genre)
-  // return fetch(``)
-  // .then(resp => resp.json())
+  let id = genre.id
+  console.log('id:', id)
+  return fetch(`${BASE_URL}/discover/movie?with_genres=${id}&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+  .then(resp => resp.json())
 }

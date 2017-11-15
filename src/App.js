@@ -31,8 +31,10 @@ class App extends Component {
   }
 
   getGenre = (e) => {
-    let genre = e.name
-    fetchByGenre(genre)
+    fetchByGenre(e)
+    .then(data => {
+      this.setState({ results: data.results })
+    })
   }
 
   filterList = (input) => {
