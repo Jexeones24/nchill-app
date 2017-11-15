@@ -7,7 +7,7 @@ export const Main = ({ ...props }) => {
       <Header />
         <div className='small-layout-main'>
           <div className='small-layout-body'>
-            <Sidebar />
+            <Sidebar genres={props.genres} />
             <div className='small-layout-content'>
               <Gallery
                 results={props.results}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
   return (
     <aside className='small-layout-aside'>
       <div className='small-layout-sidebar'>
@@ -9,9 +9,10 @@ export const Sidebar = () => {
             <div className='filter-terms'>
               <div className='filter-title'>FILTERS</div>
               <hr />
-              <div className='term'>Genre</div>
+              <div className='term'>Genres</div>
+              {props.genres.map((g) => <p className='sidebar-names' key={g.id}>{g.name}</p>)}
               <hr />
-              <div className='term'>Actor</div>
+              <div className='term'>Actors</div>
               <hr />
               <div className='term'>TV Shows</div>
             </div>
@@ -20,6 +21,6 @@ export const Sidebar = () => {
         <div className='sidebar-group'>
         </div>
       </div>
-    </aside>    
+    </aside>
   )
 }

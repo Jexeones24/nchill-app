@@ -107,6 +107,9 @@ a {
   border-color: #e3e3e3;
   padding: 12px;
 }
+.sidebar-names {
+  font-size: 10px;
+}
 .filter-title {
   font-size: 20px;
   padding-top: 10px;
