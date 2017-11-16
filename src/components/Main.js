@@ -1,5 +1,6 @@
 import React from 'react'
-import { Footer, Header, Sidebar, Gallery } from './'
+import { Footer, Header, Sidebar } from './'
+import Gallery from './Gallery'
 
 export const Main = ({ ...props }) => {
   return (

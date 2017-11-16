@@ -1,29 +1,42 @@
-import React from 'react'
-import { Image } from './Image'
+import React, { Component } from 'react'
+import { Image } from './'
 import Filter from './Filter'
 
-export const Gallery = (props) => {
-  return (
-    <div className='movie-gallery'>
-      <div className='movie-content'>
-        <div className='movie-group-header'>
-          <Filter filterList={props.filterList} />
-        </div>
-        <div className='movie-group-intro'>
-          <span className='waypoint'>
-            <span className='empty' />
-          </span>
+export default class Gallery extends Component {
+  state = {
+    isClicked: false,
+    clickedImgId: null
+  }
+  handleImageClick = (e) => {
+    this.setState({ clickedImgId: e.value.id }, () => {console.log(this.state)})
+  }
+  render () {
+    const results = this.props.results
+    const id = this.state.clickedImgId
+    return (
+      <div className='movie-gallery'>
+        <div className='movie-content'>
+          <div className='movie-group-header'>
+            <Filter filterList={this.props.filterList} />
+          </div>
+          <div className='movie-group-intro'>
+            <span className='waypoint'>
+              <span className='empty' />
+            </span>
 
-          <div className='movie-section'>
-            <div className='search-title'>TRENDING</div>
-            <div className='movie-section-content'>
-              <div className='movie-box'>
-                {props.results.map((result) => <Image key={result.id} path={result.poster_path} value={result} handleImageClick={props.handleImageClick} />)}
+            <div className='movie-section'>
+              <div className='search-title'>TRENDING</div>
+
+              <div className='movie-section-content'>
+                <div className='movie-box'>
+                  {results.map((result) => <Image isClicked={this.state.isClicked} key={result.id} path={result.poster_path} value={result} handleImageClick={this.handleImageClick} />)}
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
