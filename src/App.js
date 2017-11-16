@@ -39,11 +39,6 @@ class App extends Component {
     this.setState({ results: updatedList })
   }
 
-  handleImageClick = (e) => {
-    console.log('handling image click', e)
-    // filter and get details to render
-  }
-
   render () {
     console.log('app state:', this.state)
     return (

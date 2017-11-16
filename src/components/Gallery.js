@@ -8,7 +8,7 @@ export default class Gallery extends Component {
     clickedImgId: null
   }
   handleImageClick = (e) => {
-    this.setState({ clickedImgId: e.value.id }, () => {console.log(this.state)})
+    console.log(e)
   }
   render () {
     const results = this.props.results

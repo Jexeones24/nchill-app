@@ -196,7 +196,12 @@ hr {
   height:100%;
   width: 100%;
 }
-img {
+.image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.image img {
   display: inline-block;
   float:left;
 }
