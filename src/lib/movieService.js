@@ -1,12 +1,12 @@
 const API_KEY = '1dc59a7b7ad2a6a037fcc8da29073f1a'
 const BASE_URL = 'https://api.themoviedb.org/3'
 
-export const fetchPopularMovies = () => {
+export const loadPopularMovies = () => {
   return fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
   .then(resp => resp.json())
 }
 
-export const fetchGenres = () => {
+export const loadGenres = () => {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
   .then(resp => resp.json())
 }
@@ -14,6 +14,11 @@ export const fetchGenres = () => {
 export const fetchByGenre = (genre) => {
   let id = genre.id
   return fetch(`${BASE_URL}/discover/movie?with_genres=${id}&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+  .then(resp => resp.json())
+}
+
+export const loadPopularShows = () => {
+  return fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`)
   .then(resp => resp.json())
 }
 

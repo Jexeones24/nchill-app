@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import { fetchPopularMovies, fetchGenres, fetchByGenre } from './lib/movieService'
+import { loadPopularMovies, loadGenres, loadPopularShows, fetchByGenre } from './lib/movieService'
 import { filterItems } from './lib/movieHelpers'
 import { Main } from './components'
 
@@ -14,19 +14,24 @@ class App extends Component {
   }
 
   componentWillMount () {
-    fetchPopularMovies()
+    loadPopularMovies()
     .then(data => {
       this.setState({
         initialResults: data.results,
         results: data.results
       })
     })
-    fetchGenres()
+    loadGenres()
     .then(data => {
       this.setState({ genres: data.genres }, () => {console.log(this.state)})
     })
-    let shows = [1, 2, 3, 4, 5, 6, 7]
-    this.setState({shows: shows}, () => {console.log(this.state)})
+  }
+
+  componentDidMount () {
+    loadPopularShows()
+    .then(data => {
+      this.setState({ shows: data.results }, () => {console.log(this.state)})
+    })
   }
 
   getGenre = (e) => {

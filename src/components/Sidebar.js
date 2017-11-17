@@ -5,13 +5,9 @@ export default class Sidebar extends Component {
     clicked: []
   }
 
-
   handleClick = (index, e) => {
-    console.log('clicked', e.target, 'index:', index)
     let clicked = this.state.clicked
-    console.log('clicked', clicked)
     clicked[index] = !clicked[index]
-    console.log(clicked[index])
     this.setState({ clicked });
   }
 
@@ -21,18 +17,18 @@ export default class Sidebar extends Component {
     </div>
   )
 
-
   renderShows = () => (
     <div className='category-content'>
-      {this.props.shows.map(s => <p className='sidebar-links' value={s} key={s}>{s}</p>)}
+      {this.props.shows.map(show => <p className='sidebar-links' value={show.name} key={show.id}>{show.name}</p>)}
     </div>
   )
 
   renderActorSearchBar = () => (
     <div className='category-content'>
-      ACTORS SEARCH
+      <input className='actor-search' type='text'/>
     </div>
   )
+
   render () {
     console.log('sidebar props:', this.props)
 
