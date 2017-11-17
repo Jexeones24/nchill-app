@@ -17,7 +17,7 @@ export default class Filter extends Component {
         name='input'
         value={this.state.input}
         className='movie-group-search'
-        placeholder='search...'
+        placeholder='filter...'
         onChange={this.handleInputChange}
       />
     )

@@ -23,7 +23,7 @@ export default class Gallery extends Component {
           </div>
           <div className='movie-group-intro'>
             <div className='movie-section'>
-              <Title title={this.props.filter.name} />
+              <Title title={this.props.filter} />
 
                 <div className='movie-box'>
                   {results.map((result) => <Card flipped={this.state.flipped} key={result.id} result={result} value={result} handleCardClick={this.handleCardClick} />)}

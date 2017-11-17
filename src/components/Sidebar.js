@@ -4,7 +4,7 @@ export default class Sidebar extends Component {
   state = {
     clicked: [],
     category: '',
-    actor: ''
+    selectValue: {}
   }
 
   handleClick = (index, e) => {
@@ -14,19 +14,17 @@ export default class Sidebar extends Component {
     this.setState({ clicked, category });
   }
   handleChange = (e) => {
-
-    this.setState({ actor: e.target.value }, () => {console.log(this.state.actor)})
+    let genre = e.target.value
+    let id = e.target.options[e.target.selectedIndex].dataset
+    this.props.getGenre(genre, id)
+    this.setState({ selectValue: e.target.value })
   }
 
   renderGenres = () => (
     <div className='category-content'>
-      {this.props.genres.map(genre => <p className='sidebar-links' value={genre} key={genre.id} onClick={this.props.getGenre.bind(this, genre)}>{genre.name}</p>)}
-    </div>
-  )
-
-  renderShows = () => (
-    <div className='category-content'>
-      {this.props.shows.map(show => <p className='sidebar-links' value={show.name} key={show.id}>{show.name}</p>)}
+      {<select onChange={this.handleChange.bind(this)}>
+        {this.props.genres.map(genre => <option value={genre.name} key={genre.id} data-id={genre.id}>{genre.name}</option>)}
+      </select>}
     </div>
   )
 
@@ -44,21 +42,21 @@ export default class Sidebar extends Component {
           <div className='sidebar-nav'>
             <div className='sidebar-search'>
               <div className='filter-terms'>
-                <div className='filter-title'>FILTERS</div>
-                <hr />
-                <div className='category-item' onClick={this.handleClick.bind(this, 0)}>Genres</div>
+                <div className='filter-title'>BROWSE</div>
+                <p>Home</p>
+                <hr/>
+                <p>My List</p>
+                <hr/>
+                <p>New Arrivals</p>
+                <hr/>
+                <div className='category-item' onClick={this.handleClick.bind(this, 0)}>Movies</div>
                   <div className={"term"+" "+this.state.clicked[0]}>
                     {this.state.clicked[0] && this.renderGenres()}
                   </div>
                 <hr />
-                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>Shows</div>
-                  <div className={"term"+" "+this.state.clicked[1]}>
-                    {this.state.clicked[1] && this.renderShows()}
-                  </div>
-                <hr />
-                <div className='category-item' onClick={this.handleClick.bind(this, 2)}>Actors</div>
-                  <div className={"term"+" "+this.state.clicked[2]} >
-                    {this.state.clicked[2] && this.renderActorSearchBar()}
+                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>Actors</div>
+                  <div className={"term"+" "+this.state.clicked[1]} >
+                    {this.state.clicked[1] && this.renderActorSearchBar()}
                   </div>
                 <hr/>
               </div>
