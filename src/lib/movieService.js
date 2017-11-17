@@ -2,9 +2,19 @@ const API_KEY = '1dc59a7b7ad2a6a037fcc8da29073f1a'
 const BASE_URL = 'https://api.themoviedb.org/3'
 
 export const loadPopularMovies = () => {
-  return fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
-  .then(resp => resp.json())
+  // construct fetch for each page 1-20
+  const fetches = []
+  for (let pageI = 1; pageI <= 10; ++pageI) {
+    const pages = fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageI}`)
+    fetches.push(pages)
+  }
+  return Promise.all(fetches)
+  .then(resp => {
+    return Promise.all(resp.map(resp => resp.json()))
+  })
 }
+
+
 
 export const loadGenres = () => {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)

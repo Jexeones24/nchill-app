@@ -6,42 +6,44 @@ import { Main } from './components'
 
 class App extends Component {
   state = {
-    filter: {'name': 'Trending'},
+    filter: {
+      name:'Trending'
+    },
     genres: [],
     shows: [],
     initialResults: [],
     results: []
   }
-
   componentWillMount () {
     loadPopularMovies()
     .then(data => {
-      this.setState({
-        initialResults: data.results,
-        results: data.results
+      let results = []
+      data.forEach(result => {
+        results = results.concat(result)
       })
+      let movieList =[]
+      results.forEach(movie => {
+        movieList = movieList.concat(movie.results)
+      })
+      this.setState({ initialResults: movieList, results: movieList })
     })
     loadGenres()
     .then(data => {
       this.setState({ genres: data.genres })
     })
   }
-
   componentDidMount () {
     loadPopularShows()
     .then(data => {
-      this.setState({ shows: data.results }, () => {console.log(this.state)})
+      this.setState({ shows: data.results })
     })
   }
-
   getGenre = (genre) => {
     fetchByGenre(genre)
     .then(data => {
-      console.log(data)
       this.setState({ results: data.results, filter: genre })
     })
   }
-
   filterList = (input) => {
     let updatedList = this.state.initialResults
     updatedList = updatedList.filter(item => item.title.toLowerCase().includes(input.toLowerCase()))
