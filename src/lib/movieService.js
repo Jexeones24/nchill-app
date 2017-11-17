@@ -14,8 +14,6 @@ export const loadPopularMovies = () => {
   })
 }
 
-
-
 export const loadGenres = () => {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
   .then(resp => resp.json())

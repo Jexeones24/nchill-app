@@ -186,31 +186,25 @@ input.movie-group-search:focus {
 }
 
 .movie-box {
-  border-radius: 3px;
-  border: 1px solid #eee;
   overflow: hidden;
-  /*height:100%;
-  width: 100%;*/
-  /*position: relative;*/
-  /*display: inline-block;
-  float: left;*/
+  display: block;
+  margin: 0;
 }
 
 .card-container {
   z-index: 1;
-  width: 200px;
-  height: 300px;
+  width: 33%;
+  height: 550px;
   position: relative;
   perspective: 1000px;
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
+  display: inline-block;
 }
 
 img {
   object-fit: cover;
   width: 100% !important;
   height: auto !important;
+  display: block;
 }
 
 .card-body {
@@ -220,7 +214,7 @@ img {
   transition: all .7s linear;
   display: block;
   position: absolute;
-    font-family: 'Roboto', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 .card div {
   display: block;
