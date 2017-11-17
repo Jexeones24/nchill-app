@@ -17,6 +17,7 @@ export const Main = ({ ...props }) => {
             <div className='small-layout-content'>
               <Gallery
                 results={props.results}
+                filter={props.filter}
                 filterList={props.filterList}
                 handleImageClick={props.handleImageClick}
               />

@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class Sidebar extends Component {
   state = {
     clicked: [],
-    category: ''
+    category: '',
+    actor: ''
   }
 
   handleClick = (index, e) => {
@@ -12,10 +13,14 @@ export default class Sidebar extends Component {
     clicked[index] = !clicked[index]
     this.setState({ clicked, category });
   }
+  handleChange = (e) => {
+
+    this.setState({ actor: e.target.value }, () => {console.log(this.state.actor)})
+  }
 
   renderGenres = () => (
     <div className='category-content'>
-      {this.props.genres.map(g => <p className='sidebar-links' value={g} key={g.id} onClick={this.props.getGenre.bind(this, g)}>{g.name}</p>)}
+      {this.props.genres.map(genre => <p className='sidebar-links' value={genre} key={genre.id} onClick={this.props.getGenre.bind(this, genre)}>{genre.name}</p>)}
     </div>
   )
 
@@ -27,7 +32,7 @@ export default class Sidebar extends Component {
 
   renderActorSearchBar = () => (
     <div className='category-content'>
-      <input className='actor-search' type='text'/>
+      <input className='actor-search' type='text' value={this.state.actor} placeholder='name' onChange={this.handleChange} />
     </div>
   )
 
@@ -46,19 +51,14 @@ export default class Sidebar extends Component {
                     {this.state.clicked[0] && this.renderGenres()}
                   </div>
                 <hr />
-                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>TV Shows</div>
+                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>Shows</div>
                   <div className={"term"+" "+this.state.clicked[1]}>
                     {this.state.clicked[1] && this.renderShows()}
                   </div>
                 <hr />
-                <div onClick={this.handleClick.bind(this, 2)}>Actors</div>
+                <div className='category-item' onClick={this.handleClick.bind(this, 2)}>Actors</div>
                   <div className={"term"+" "+this.state.clicked[2]} >
                     {this.state.clicked[2] && this.renderActorSearchBar()}
-                  </div>
-                <hr/>
-                  <div onClick={this.handleClick.bind(this, 3)}>Networks</div>
-                  <div className={"term"+" "+this.state.clicked[3]}>
-                    {this.state.clicked[3] && <p>HELLO</p>}
                   </div>
                 <hr/>
               </div>

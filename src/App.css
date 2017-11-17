@@ -112,9 +112,11 @@ a {
   font-size: 11px;
   text-decoration: none;
 }
-.sidebar-links:hover {
-  color: grey;
+.sidebar-links:hover, .category-item:hover {
+  color: red;
+  cursor: pointer;
 }
+
 .filter-title {
   font-size: 20px;
   padding-top: 10px;

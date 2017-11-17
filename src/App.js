@@ -6,7 +6,7 @@ import { Main } from './components'
 
 class App extends Component {
   state = {
-    filter: 'popular',
+    filter: {'name': 'Trending'},
     genres: [],
     shows: [],
     initialResults: [],
@@ -23,7 +23,7 @@ class App extends Component {
     })
     loadGenres()
     .then(data => {
-      this.setState({ genres: data.genres }, () => {console.log(this.state)})
+      this.setState({ genres: data.genres })
     })
   }
 
@@ -34,10 +34,11 @@ class App extends Component {
     })
   }
 
-  getGenre = (e) => {
-    fetchByGenre(e)
+  getGenre = (genre) => {
+    fetchByGenre(genre)
     .then(data => {
-      this.setState({ results: data.results })
+      console.log(data)
+      this.setState({ results: data.results, filter: genre })
     })
   }
 
