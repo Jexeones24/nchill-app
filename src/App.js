@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     filter: 'popular',
     genres: [],
+    shows: [],
     initialResults: [],
     results: []
   }
@@ -22,8 +23,10 @@ class App extends Component {
     })
     fetchGenres()
     .then(data => {
-      this.setState({ genres: data.genres })
+      this.setState({ genres: data.genres }, () => {console.log(this.state)})
     })
+    let shows = [1, 2, 3, 4, 5, 6, 7]
+    this.setState({shows: shows}, () => {console.log(this.state)})
   }
 
   getGenre = (e) => {
@@ -40,13 +43,14 @@ class App extends Component {
   }
 
   render () {
-    console.log('app state:', this.state)
+    // console.log('app state:', this.state)
     return (
       <div className='App h-100'>
         <div className='small-layout h-100'>
           <Main
             filter={this.state.filter}
             genres={this.state.genres}
+            shows={this.state.shows}
             results={this.state.results}
             filterList={this.filterList}
             getGenre={this.getGenre}

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Footer, Header, Sidebar } from './'
+import { Footer, Header } from './'
 import Gallery from './Gallery'
+import Sidebar from './Sidebar'
 
 export const Main = ({ ...props }) => {
   return (
@@ -10,6 +11,7 @@ export const Main = ({ ...props }) => {
           <div className='small-layout-body'>
             <Sidebar
               genres={props.genres}
+              shows={props.shows}
               getGenre={props.getGenre}
             />
             <div className='small-layout-content'>

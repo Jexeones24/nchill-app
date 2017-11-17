@@ -8,7 +8,9 @@ export default class Gallery extends Component {
     clickedImgId: null
   }
   handleCardClick = (e) => {
-    console.log('flipping card:', e)
+    console.log('card clicked:', e)
+    // add to clipboard - incremement something
+    // show this happening in a div on side - lists count of saved movies and id of saved movie
   }
   render () {
     const results = this.props.results

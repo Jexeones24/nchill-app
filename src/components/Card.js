@@ -21,13 +21,14 @@ export const CardFront = (props) => {
 }
 
 export const CardBack = ({details, handleCardClick}) => {
-  console.log('back props:', details)
   return (
     <div className='card-side side-back' onClick={handleCardClick.bind(this, details)}>
-      <h5>{details.title}</h5>
-      <p>{details.overview}</p>
-      <p>Language: {details.original_language}</p>
-      <p>Stars: {details.vote_average}</p>
+      <p className='card-back-title'>{details.title}</p>
+      <div className='card-back-detail'>
+        <p className='detail'>Overview: {details.overview}</p>
+        <p className='detail'>Language: {details.original_language}</p>
+        <p className='detail'>Stars: {details.vote_average}</p>
+      </div>
     </div>
   )
 }
