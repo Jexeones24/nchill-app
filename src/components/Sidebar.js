@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 
 export default class Sidebar extends Component {
   state = {
-    clicked: []
+    clicked: [],
+    category: ''
   }
 
   handleClick = (index, e) => {
+    let category = e.target.innerHTML
     let clicked = this.state.clicked
     clicked[index] = !clicked[index]
-    this.setState({ clicked });
+    this.setState({ clicked, category });
   }
 
   renderGenres = () => (
@@ -30,8 +32,7 @@ export default class Sidebar extends Component {
   )
 
   render () {
-    console.log('sidebar props:', this.props)
-
+    // console.log('sidebar props:', this.props)
     return (
       <aside className='small-layout-aside'>
         <div className='small-layout-sidebar'>
@@ -50,9 +51,14 @@ export default class Sidebar extends Component {
                     {this.state.clicked[1] && this.renderShows()}
                   </div>
                 <hr />
-                  <div onClick={this.handleClick.bind(this, 2)}>Actors</div>
+                <div onClick={this.handleClick.bind(this, 2)}>Actors</div>
                   <div className={"term"+" "+this.state.clicked[2]} >
                     {this.state.clicked[2] && this.renderActorSearchBar()}
+                  </div>
+                <hr/>
+                  <div onClick={this.handleClick.bind(this, 3)}>Networks</div>
+                  <div className={"term"+" "+this.state.clicked[3]}>
+                    {this.state.clicked[3] && <p>HELLO</p>}
                   </div>
                 <hr/>
               </div>
@@ -60,7 +66,7 @@ export default class Sidebar extends Component {
           </div>
 
           <div className='sidebar-group'>
-            HELLO
+            {this.state.category ? 'You chose '+this.state.category : []}
           </div>
 
         </div>
