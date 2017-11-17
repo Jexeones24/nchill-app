@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 export default class Sidebar extends Component {
   state = {
     clicked: [],
-    category: '',
-    selectValue: {}
+    category: ''
   }
 
   handleClick = (index, e) => {
@@ -17,12 +16,12 @@ export default class Sidebar extends Component {
     let genre = e.target.value
     let id = e.target.options[e.target.selectedIndex].dataset
     this.props.getGenre(genre, id)
-    this.setState({ selectValue: e.target.value })
   }
 
   renderGenres = () => (
     <div className='category-content'>
-      {<select onChange={this.handleChange.bind(this)}>
+      {<select name='genre' defaultValue='no-value' onChange={this.handleChange.bind(this)}>
+        <option value='no-value' disabled hidden>Genre</option>
         {this.props.genres.map(genre => <option value={genre.name} key={genre.id} data-id={genre.id}>{genre.name}</option>)}
       </select>}
     </div>
