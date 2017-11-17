@@ -44,18 +44,15 @@ export default class Sidebar extends Component {
                 <div className='filter-title'>BROWSE</div>
                 <p>Home</p>
                 <hr/>
-                <p>My List</p>
-                <hr/>
-                <p>New Arrivals</p>
-                <hr/>
+
                 <div className='category-item' onClick={this.handleClick.bind(this, 0)}>Movies</div>
-                  <div className={"term"+" "+this.state.clicked[0]}>
-                    {this.state.clicked[0] && this.renderGenres()}
-                  </div>
-                <hr />
-                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>Actors</div>
-                  <div className={"term"+" "+this.state.clicked[1]} >
-                    {this.state.clicked[1] && this.renderActorSearchBar()}
+                <div className={"term"+" "+this.state.clicked[0]}>
+                  {this.state.clicked[0] && this.renderGenres()}
+                </div>
+                <hr/>
+                <div className='category-item' onClick={this.handleClick.bind(this, 1)}>My List</div>
+                  <div className={"term"+" "+this.state.clicked[1]}>
+                    {this.state.clicked[1] && <div>redirect</div>}
                   </div>
                 <hr/>
               </div>

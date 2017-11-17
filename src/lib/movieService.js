@@ -25,6 +25,10 @@ export const fetchByGenre = (genre) => {
   .then(resp => resp.json())
 }
 
+export const fetchLatest = () => {
+  return fetch(`${BASE_URL}/movie/latest?api_key=${API_KEY}&language=en-US`)
+  .then(resp => resp.json())
+}
 // https://api.themoviedb.org/3/person/31?api_key=1dc59a7b7ad2a6a037fcc8da29073f1a&append_to_response=credits
 
 // reviews:  http://api.themoviedb.org/3/movie/83542/reviews?api_key=1dc59a7b7ad2a6a037fcc8da29073f1a

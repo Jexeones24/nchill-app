@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import { loadPopularMovies, loadGenres, fetchByGenre } from './lib/movieService'
+import { loadPopularMovies, loadGenres, fetchByGenre, fetchLatest } from './lib/movieService'
 import { filterItems } from './lib/movieHelpers'
 import { Main } from './components'
 
@@ -29,6 +29,10 @@ class App extends Component {
     .then(data => {
       this.setState({ genres: data.genres }, () => {console.log('genres:', data.genres)})
     })
+  }
+  componentDidMount() {
+    fetchLatest()
+    .then(data => {console.log(data)})
   }
 
   getGenre = (genre, id) => {
