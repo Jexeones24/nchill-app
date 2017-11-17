@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Image } from './'
+import { Image, Card } from './'
 import Filter from './Filter'
 
 export default class Gallery extends Component {
   state = {
-    isClicked: false,
+    flipped: false,
     clickedImgId: null
   }
-  handleImageClick = (e) => {
-    console.log(e)
+  handleCardClick = (e) => {
+    console.log('flipping card:', e)
   }
   render () {
     const results = this.props.results
@@ -20,18 +20,12 @@ export default class Gallery extends Component {
             <Filter filterList={this.props.filterList} />
           </div>
           <div className='movie-group-intro'>
-            <span className='waypoint'>
-              <span className='empty' />
-            </span>
-
             <div className='movie-section'>
-              <div className='search-title'>TRENDING</div>
+              <Title />
 
-              <div className='movie-section-content'>
                 <div className='movie-box'>
-                  {results.map((result) => <Image isClicked={this.state.isClicked} key={result.id} path={result.poster_path} value={result} handleImageClick={this.handleImageClick} />)}
+                  {results.map((result) => <Card flipped={this.state.flipped} key={result.id} result={result} value={result} handleCardClick={this.handleCardClick} />)}
                 </div>
-              </div>
 
             </div>
           </div>
@@ -40,3 +34,5 @@ export default class Gallery extends Component {
     )
   }
 }
+
+const Title = () => <div className='search-title'>TRENDING</div>

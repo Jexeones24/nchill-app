@@ -50,7 +50,6 @@ class App extends Component {
             results={this.state.results}
             filterList={this.filterList}
             getGenre={this.getGenre}
-            handleImageClick={this.handleImageClick}
           />
         </div>
       </div>
